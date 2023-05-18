@@ -51,7 +51,7 @@
                                     alt="user photo">
 
                                 <div class="px-2 py-3 text-left">
-                                    <span class="block font-bold">Bonnie Green</span>
+                                    <span class="block font-bold">{{ auth()->user()->name }}</span>
                                     <span class="block text-sm">Admin</span>
                                 </div>
                                 <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor"
@@ -64,6 +64,10 @@
                             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
                                 id="user-dropdown">
                                 <ul class="py-2" aria-labelledby="user-menu-button">
+                                    <li>
+                                        <a href="profile"
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Profile</a>
+                                    </li>
                                     <li>
                                         <a href="#"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
