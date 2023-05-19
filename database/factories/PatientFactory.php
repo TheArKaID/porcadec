@@ -16,8 +16,16 @@ class PatientFactory extends Factory
      */
     public function definition(): array
     {
+        $sex = rand(1, 2)%2 == 1 ? 'M' : 'F';
         return [
-            //
+            'mrn' => $this->faker->unique()->numberBetween(100000, 999999),
+            'name' => $this->faker->name($sex == 'M' ? 'male' : 'female'),
+            'sex' => $sex,
+            'birth_day' => $this->faker->date(),
+            'birth_place' => $this->faker->city,
+            'phone' => $this->faker->phoneNumber,
+            'address' => $this->faker->address,
+            'origin' => $this->faker->country
         ];
     }
 }

@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use \Database\Factories\PatientFactory;
 
 class Patient extends Model
 {
+    use HasFactory;
+
     /**
      * The table associated with the model.
      *
@@ -28,13 +32,15 @@ class Patient extends Model
      */
     public $timestamps = true;
 
+
     /**
-     * Get the user that owns the Patient
+     * Create a new factory instance for the model.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user(): BelongsTo
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
+    */
+    protected static function newFactory(): PatientFactory
     {
-        return $this->belongsTo(User::class);
+        return PatientFactory::new();
     }
+
 }

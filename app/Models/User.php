@@ -42,15 +42,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
-
-    /**
-     * Get the patient associated with the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function patient(): HasOne
-    {
-        return $this->hasOne(Patient::class);
-    }
 }
