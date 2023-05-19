@@ -23,6 +23,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
+    @stack('styles')
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
@@ -47,6 +48,7 @@
 
     </div>
 
+    @stack('scripts')
 </body>
 
 </html>
