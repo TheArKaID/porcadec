@@ -31,7 +31,7 @@
 
     <x-navbar/>
 
-    <div class="flex overflow-hidden bg-white pt-16">
+    <div class="flex overflow-hidden pt-16">
 
         <x-sidebar/>
 
