@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/dashboard');
 });
 
 Route::get('/dashboard', function () {
@@ -30,6 +30,8 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('patient')->name('patient.')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('index');
+        Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
+        Route::get('/{patient}/edit', [PatientController::class, 'edit'])->name('edit');
     });
 });
 

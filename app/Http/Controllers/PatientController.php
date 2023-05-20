@@ -13,7 +13,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('patients.index');
+        $patients = Patient::paginate();
+        return view('patients.index', compact('patients'));
     }
 
     /**
@@ -37,7 +38,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return view('patients.show', compact('patient'));
     }
 
     /**
@@ -45,7 +46,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        return view('patients.edit', compact('patient'));
     }
 
     /**

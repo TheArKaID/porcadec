@@ -1,134 +1,63 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            All Patient
+        </h2>
+    </x-slot>
     <div class="py-12 bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
         <div class="w-full mx-auto sm:px-8 lg:px-10 space-y-6">
             {{-- <x-patient-table/> --}}
             <table class="divide-y divide-gray-300" id="dataTable">
-                <thead class="bg-black">
+                <thead class="">
                     <tr>
                         <th class="px-6 py-2 text-semi-bold">
-                            ID
+                            No
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Name
+                            Nama
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Email
+                            Kabupaten
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Created_at
+                            No. HP
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Edit
+                            Gender
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Delete
+                            Action
                         </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-300">
-                    <tr class="text-center whitespace-nowrap">
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            1
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-900">
-                                Jon doe
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-500">jhondoe@example.com</div>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            2021-1-12
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </a>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr class="text-center whitespace-nowrap">
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            2
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-900">
-                                Jon doe 2
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-500">jhondoe2@example.com</div>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            2021-1-12
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </a>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr class="text-center whitespace-nowrap">
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            3
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-900">
-                                Jon doe 3
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="text-sm text-gray-500">jhondoe3@example.com</div>
-                        </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            2021-1-12
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </a>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="inline-block text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </a>
-                        </td>
-                    </tr>
-
+                    {{-- AlpineJs foreach --}}
+                    @foreach ($patients as $patient)
+                        <tr class="whitespace-nowrap">
+                            <td class="px-6 py-4 text-sm text-gray-900">
+                                {{ $loop->iteration }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{ $patient->name }}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">{{ $patient->origin }}</div>
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">
+                                {{ $patient->phone }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-900">
+                                {{ $patient->sex == 'M' ? 'Laki-laki' : 'Perempuan' }}
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <a href="{{ route('patient.show', $patient->id) }}" type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</a>
+                                <a href="#" type="button" class="text-black border border-yellow-300 font-medium rounded-sm text-sm text-center px-5 py-2.5 mr-2 mb-2 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Ubahh Status</a>
+                                <a href="#" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-sm text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -138,13 +67,17 @@
     @endpush
     @push('scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#dataTable').DataTable();
-    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                ordering: false,
+                searching: false,
+                pageLength: 5,
+                lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
+                dom: 'itpl'
             });
-        </script>
+        });
+    </script>
     @endpush
 </x-app-layout>
