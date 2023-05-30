@@ -38,7 +38,7 @@
         <div id="main-content" class="h-screen w-full bg-green-100 relative overflow-y-auto lg:ml-64">
             <main>
                 @if (isset($header))
-                <div class=" py-12 bg-white  shadow rounded-lg p-4 md:p-6 xl:p-8 my-4">
+                <div class="py-6 bg-white  shadow rounded-lg p-4 xl:p-6 my-4 mx-4">
                     {{ $header }}
                 </div>
                 @endif

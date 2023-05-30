@@ -1,67 +1,72 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Patient: {{ $patient->name }}
-        </h2>
+        <button type="button" class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-small rounded-lg text-sm px-2 py-2 text-center inline-flex items-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">
+            <svg aria-hidden="true" class="w-5 h-5 ml-1 -mr-1" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            &nbsp; Back
+        </button>
     </x-slot>
     <div class="py-12 bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
         <div class="w-full mx-auto sm:px-8 lg:px-10 space-y-6">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white">Patient: {{ $patient->name }}</h2>
             <form action="" method="post">
                 <div class="grid md:grid-cols-2 md:gap-4">
-                    <div class="grid md:gap-6">
-                        <div class="relative z-0 w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <input type="text" name="name" id="name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" value="{{ $patient->name }}" required />
-                            <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Patient</label>
+                    <div class="grid md:gap-2">
+                        <div class="relative z-0 w-full group">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Patient Name</label>
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ $patient->name }}" required/>
                         </div>
-                        <div class="relative z-0 w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" value="{{ $patient->phone }}" required />
-                            <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">No. HP (123-456-7890)</label>
+                        <div class="relative z-0 w-full group">
+                            <label for="phone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
+                            <input type="text" name="phone_number" id="phone_number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ $patient->phone }}" required/>
                         </div>
-                        <div class="relative z-0 w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <input type="text" name="floating_last_name" id="floating_last_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" value="{{ $patient->origin }}" required />
-                            <label for="floating_last_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Asal Daerah</label>
+                        <div class="relative z-0 w-full group">
+                            <label for="origin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Origin</label>
+                            <input type="text" name="origin" id="origin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ $patient->origin }}" required/>
                         </div>
-                        <div class="relative z-0 w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <input type="text" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" value="{{ '$patient->' }}" required />
-                            <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Riwayat Perjalanan</label>
+                        <div class="relative z-0 w-full group">
+                            <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Travel History</label>
+                            <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ 'Perjalanan' }}" required/>
                         </div>
                     </div>
                     
                     <div class="grid">
-                        <div class="relative z-0 h-max w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <input type="date" name="floating_first_name" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" value="{{ $patient->birth_day }}" required />
-                            <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Tanggal Lahir</label>
+                        <div class="sm:col-span-2">
+                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
+                            <input type="text" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ \Carbon\Carbon::createFromFormat('Y-m-d', $patient->birth_day)->locale('id_ID')->format('l, d F Y') }}" required/>
                         </div>
-                        <div class="relative z-0 h-full w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                            <textarea id="message" rows="9" class="block py-2.5 px-0 w-full h-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer">{{ '$patient->' }}</textarea>
-                            <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-5 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Gejala</label>
+                        <div class="sm:col-span-2">
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gejala</label>
+                            <textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50" required>adqwdsadasd</textarea>
                         </div>
                     </div>
                 </div>
+
                 <hr class="mt-4 mb-3">
                 <div class="grid md:grid-cols-2 md:gap-4">
-                    <div class="relative z-0 h-max w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                        <label for="underline_select" class="sr-only">Pilih Model Scan</label>
-                        <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                            <option selected>Pilih Model Scan</option>
+                    <div class="relative z-0 h-max w-full group">
+                        <label for="scan_image" class="sr-only">Pilih Model Scan</label>
+                        <select id="scan_image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <option selected hidden value disabled>Pilih Model Scan</option>
                             <option value="CT-Scan">CT-Scan</option>
                             <option value="X-Ray">X-Ray</option>
                         </select>
                     </div>
-                    <div class="relative z-0 h-max w-full group border-2 border-green-300 rounded-md mb-1 p-2">
-                        <label for="underline_select" class="sr-only">Pilih Model Detection</label>
-                        <select id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
-                            <option selected>Pilih Model Detection</option>
+                    <div class="relative z-0 h-max w-full group">
+                        <label for="model_detection" class="sr-only">Pilih Model Detection</label>
+                        <select id="model_detection" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                            <option selected hidden value disabled>Pilih Model Detection</option>
                             <option value="VGG16">VGG16</option>
                             <option value="ResNet50">ResNet50</option>
                             <option value="MobileNet">MobileNet</option>
-                            <option value="DE">Germany</option>
+                            <option value="LeNet">LeNet</option>
                         </select>
                     </div>
                 </div>
                 <hr class="mt-4 mb-3">
                 <div class="grid md:grid-cols-2 md:gap-4">
-                    <div class="flex z-0 h-max w-full group border-2 border-green-300 rounded-md mb-1 p-2">
+                    <div class="flex z-0 h-max w-full group">
                         <div class="w-3/4">
                             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload File Scan</label>
                             <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file">
