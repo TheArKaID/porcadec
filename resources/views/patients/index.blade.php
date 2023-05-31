@@ -14,13 +14,13 @@
                             No
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Nama
+                            Name
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            Kabupaten
+                            City
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
-                            No. HP
+                            Phone
                         </th>
                         <th class="px-6 py-2 text-semi-bold">
                             Gender
@@ -49,12 +49,12 @@
                                 {{ $patient->phone }}
                             </td>
                             <td class="px-3 py-2 text-sm text-gray-900">
-                                {{ $patient->sex == 'M' ? 'Laki-laki' : 'Perempuan' }}
+                                {{ $patient->sex == 'M' ? 'Male' : 'Female' }}
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <a href="{{ route('patient.show', $patient->id) }}" type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</a>
-                                <a href="#" type="button" class="text-black border border-yellow-300 font-medium rounded-sm text-sm text-center px-2 py-2 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Ubahh Status</a>
-                                <a href="#" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Hapus</a>
+                                {{-- <a href="#" type="button" class="text-black border border-yellow-300 font-medium rounded-sm text-sm text-center px-2 py-2 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Ubahh Status</a> --}}
+                                <a href="#" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
                             </td>
                         </tr>
                     @endforeach
@@ -73,8 +73,8 @@
             $('#dataTable').DataTable({
                 ordering: false,
                 searching: false,
-                pageLength: 5,
-                lengthMenu: [ 5, 10, 25, 50, 75, 100 ],
+                pageLength: 10,
+                lengthMenu: [ 10, 25, 50, 100 ],
                 dom: 'itpl'
             });
         });

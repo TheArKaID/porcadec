@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('detection_model');
             $table->text('travel_history');
             $table->text('symptoms');
+            $table->string('result')->default('processing');
             $table->timestamps();
         });
 
