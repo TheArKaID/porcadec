@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use \Database\Factories\PatientFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Patient extends Model
+class PatientTest extends Model
 {
     use HasFactory, HasUuids;
 
@@ -18,7 +16,7 @@ class Patient extends Model
      *
      * @var string
      */
-    protected $table = 'patients';
+    protected $table = 'patient_tests';
 
     /**
      * The attributes that aren't mass assignable.
@@ -35,23 +33,13 @@ class Patient extends Model
     public $timestamps = true;
 
     /**
-     * Get all of the patientTests for the Patient
+     * Get the patient that owns the PatientTest
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function patientTests(): HasMany
+    public function patient(): BelongsTo
     {
-        return $this->hasMany(PatientTest::class);
-    }
-
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
-    */
-    protected static function newFactory(): PatientFactory
-    {
-        return PatientFactory::new();
+        return $this->belongsTo(Patient::class);
     }
 
     /**
