@@ -11,7 +11,7 @@ class UpdatePatientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,14 @@ class UpdatePatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'mrn' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:255',
+            'sex' => 'required|string|in:M,F',
+            'birth_day' => 'required|date',
+            'birth_place' => 'required|string|max:255',
+            'address' => 'required|string',
+            'origin' => 'required|string|max:255',
         ];
     }
 }

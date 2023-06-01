@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/{patient}/test', [PatientController::class, 'createTest'])->name('test.create');
         Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
         Route::get('/{patient}/edit', [PatientController::class, 'edit'])->name('edit');
+        Route::patch('/{patient}/edit', [PatientController::class, 'update'])->name('edit');
     });
 });
 
