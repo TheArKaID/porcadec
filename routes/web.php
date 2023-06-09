@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerServiceController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::patch('/{patient}/edit', [PatientController::class, 'update'])->name('edit');
     });
     
+    Route::get('customer-service', [CustomerServiceController::class, 'index'])->name('customer-service.index');
+
     Route::get('settings', [SettingController::class, 'index'])->name('setting.index');
     Route::post('settings', [SettingController::class, 'store'])->name('setting.index.post');
     Route::delete('settings/sm/{scanModel}', [SettingController::class, 'smDestroy'])->name('setting.sm.delete');
