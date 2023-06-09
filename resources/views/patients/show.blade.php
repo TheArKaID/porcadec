@@ -141,13 +141,13 @@
                 <div class="grid md:gap-2">
                     <div class="sm:col-span-2">
                         <label for="travel_history" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Travel History</label>
-                        <textarea id="travel_history" name="travel_history" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50">adqw dsadasd</textarea>
+                        <textarea id="travel_history" name="travel_history" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50"></textarea>
                     </div>
                 </div>
                 <div class="grid md:gap-2">
                     <div class="sm:col-span-2">
                         <label for="symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
-                        <textarea id="symptoms" name="symptoms" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50">adqwdsad asd</textarea>
+                        <textarea id="symptoms" name="symptoms" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50"></textarea>
                     </div>
                 </div>
             </div>
@@ -157,16 +157,18 @@
                     <label for="scan_model" class="sr-only">Pilih Model Scan</label>
                     <select id="scan_model" name="scan_model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         <option selected hidden value disabled>Pilih Model Scan</option>
-                        <option value="CT-Scan">CT-Scan</option>
-                        <option value="X-Ray">X-Ray</option>
+                        @foreach ($scanModel as $sm)
+                            <option value="{{ $sm->name }}">{{ $sm->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="relative z-0 h-max w-full group">
                     <label for="detection_model" class="sr-only">Pilih Model Detection</label>
                     <select id="detection_model" name="detection_model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         <option selected hidden value disabled>Pilih Model Detection</option>
-                        <option value="VGG">VGG</option>
-                        <option value="ResNet">ResNet</option>
+                        @foreach ($detectionModel as $dm)
+                            <option value="{{ $dm->name }}">{{ $dm->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

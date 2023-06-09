@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/{patient}/edit', [PatientController::class, 'edit'])->name('edit');
         Route::patch('/{patient}/edit', [PatientController::class, 'update'])->name('edit');
     });
+    
+    Route::get('settings', [SettingController::class, 'index'])->name('setting.index');
+    Route::post('settings', [SettingController::class, 'store'])->name('setting.index.post');
+    Route::delete('settings/sm/{scanModel}', [SettingController::class, 'smDestroy'])->name('setting.sm.delete');
+    Route::delete('settings/dm/{detectionModel}', [SettingController::class, 'dmDestroy'])->name('setting.dm.delete');
 });
 
 require __DIR__.'/auth.php';

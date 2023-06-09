@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Models\DetectionModel;
 use App\Models\Patient;
+use App\Models\ScanModel;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -39,7 +41,10 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('patients.show', compact('patient'));
+        $scanModel = ScanModel::all();
+        $detectionModel = DetectionModel::all();
+
+        return view('patients.show', compact('patient', 'scanModel', 'detectionModel'));
     }
 
     /**
