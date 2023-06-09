@@ -52,6 +52,13 @@ return [
     */
 
     'channels' => [
+        'access' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/access.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'replace_placeholders' => true,
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
