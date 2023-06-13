@@ -86,6 +86,9 @@
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
+                                            <span class="text-sm font-semibold">{{ $dm->name }}</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
                                             <span class="text-sm font-semibold">{{ $dm->code }}</span>
                                         </td>
                                         <td>
