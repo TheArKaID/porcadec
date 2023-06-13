@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('index');
         Route::post('/{patient}/test', [PatientController::class, 'createTest'])->name('test.create');
         Route::get('/{patient}', [PatientController::class, 'show'])->name('show');
+        Route::get('/{patient}/test/{patient_test}/image', [PatientController::class, 'getTestImage'])->name('test.image');
         Route::get('/{patient}/edit', [PatientController::class, 'edit'])->name('edit');
         Route::patch('/{patient}/edit', [PatientController::class, 'update'])->name('edit');
     });

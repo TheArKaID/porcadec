@@ -114,9 +114,52 @@
                                         {{ $pt->detection_model }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        <a href="#" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-1 py-1 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-700">
+                                        <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-sm text-sm px-1 py-1 text-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-700" onclick="return document.getElementById('hidden-button-{{ $loop->iteration }}').click()">
                                             Detail
-                                        </a>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <div id="accordion-flush" data-accordion="collapse" data-active-classes="bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-500 dark:text-gray-400">
+                                            <h2 id="accordion-flush-heading-{{ $loop->iteration }}" hidden>
+                                                <button type="button" id="hidden-button-{{ $loop->iteration }}" class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-{{ $loop->iteration }}" aria-expanded="false" aria-controls="accordion-flush-body-{{ $loop->iteration }}"></button>
+                                            </h2>
+                                            <div id="accordion-flush-body-{{ $loop->iteration }}" class="hidden" aria-labelledby="accordion-flush-heading-{{ $loop->iteration }}">
+                                                <div class="flex">
+                                                    <div class="grid md:grid-cols-2 gap-4 w-3/4 mx-auto">
+                                                        <div class="relative z-0 w-full group">
+                                                            <div class="sm:col-span-2">
+                                                                <label for="travel_history" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Travel History</label>
+                                                                <textarea id="travel_history" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50" readonly disabled>{{ $pt->travel_history }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="relative z-0 w-full group">
+                                                            <div class="sm:col-span-2">
+                                                                <label for="symptoms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Symptoms</label>
+                                                                <textarea id="symptoms" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-50" readonly disabled>{{ $pt->symptoms }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex">
+                                                    <div class="grid w-3/4 mx-auto">
+                                                        <div class="relative z-0 w-full group">
+                                                            <div class="sm:col-span-2">
+                                                                <label for="result" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                                                                <div class="flex flex-col">
+                                                                    <div class="flex flex-col">
+                                                                        <div class="relative">
+                                                                            <img src="{{ route('patient.test.image', [$pt->patient_id, $pt->id]) }}" alt="Image" class="w-full h-96 object-cover rounded-lg" loading="lazy">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
@@ -129,6 +172,7 @@
             </div>
         </div>
     </div>
+    
 </x-app-layout>
 
 <x-modal :title="'Create a New Test'" :id="'create-new-test-modal'">

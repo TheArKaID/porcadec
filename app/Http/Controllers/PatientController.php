@@ -6,6 +6,7 @@ use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\DetectionModel;
 use App\Models\Patient;
+use App\Models\PatientTest;
 use App\Models\ScanModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -46,6 +47,18 @@ class PatientController extends Controller
         $detectionModel = DetectionModel::all();
 
         return view('patients.show', compact('patient', 'scanModel', 'detectionModel'));
+    }
+
+    /**
+     *  Show the image of the specified resource.
+     */
+    public function getTestImage(Patient $patient, PatientTest $patient_test)
+    {
+        if (!file_exists(storage_path('app/public/images/scans/' . $patient_test->id . '.png'))) {
+            return response()->file(storage_path('app/public/images/404.png'));
+        } else {
+            return response()->file(storage_path('app/public/images/scans/' . $patient_test->id . '.png'));
+        }
     }
 
     /**
