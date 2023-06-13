@@ -14,10 +14,12 @@ class ScanModelSeeder extends Seeder
     public function run(): void
     {
         ScanModel::create([
-            'name' => 'CT-Scan'
+            'name' => 'CT-Scan',
+            'code' => 'ctscan'
         ]);
         ScanModel::create([
-            'name' => 'X-Ray'
+            'name' => 'X-Ray',
+            'code' => 'xray'
         ]);
     }
 }

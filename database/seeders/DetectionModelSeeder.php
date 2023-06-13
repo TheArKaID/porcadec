@@ -14,10 +14,12 @@ class DetectionModelSeeder extends Seeder
     public function run(): void
     {
         DetectionModel::create([
-            'name' => 'VGG'
+            'name' => 'VGG',
+            'code' => 'vgg'
         ]);
         DetectionModel::create([
-            'name' => 'ResNet'
+            'name' => 'ResNet',
+            'code' => 'resnet'
         ]);
     }
 }

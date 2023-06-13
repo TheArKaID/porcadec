@@ -43,6 +43,18 @@ class PatientTest extends Model
     }
 
     /**
+     * Get Readable Test Result
+     * 
+     * @return string
+     */
+    public function getReadableTestResult(): string
+    {
+        $result = json_decode($this->result, true);
+
+        return $result['class_label'] . ' (' . round($result['confidence'], 2) . '%)';
+    }
+
+    /**
      * Static boot
      * 
      * @return void

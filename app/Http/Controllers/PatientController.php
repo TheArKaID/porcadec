@@ -8,6 +8,7 @@ use App\Models\DetectionModel;
 use App\Models\Patient;
 use App\Models\ScanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PatientController extends Controller
 {
@@ -84,8 +85,8 @@ class PatientController extends Controller
             $data = $request->validate([
                 'travel_history' => 'nullable|string',
                 'symptoms' => 'nullable|string',
-                'scan_model' => 'required|in:CT-Scan,X-Ray',
-                'detection_model' => 'required|in:VGG,ResNet',
+                'scan_model' => 'required',
+                'detection_model' => 'required',
                 'scan_image' => 'required|image|mimes:png,jpg,jpeg',
             ]);
 
@@ -94,6 +95,7 @@ class PatientController extends Controller
                 'symptoms' => $data['symptoms'],
                 'scan_model' => $data['scan_model'],
                 'detection_model' => $data['detection_model'],
+                'result' => 'null'
             ]);
 
             $request->file('scan_image')->storeAs(
@@ -102,10 +104,31 @@ class PatientController extends Controller
             );
 
             // Call API to Python server
+            $url = env('DECO_PYTHON_URL') . '/api/' . $data['scan_model'] . '/' . $data['detection_model'];
+            $client = new \GuzzleHttp\Client();
+            $response = $client->request('POST', $url, [
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'contents' => fopen(storage_path('app/public/images/scans/' . $patientTest->id . '.png'), 'r'),
+                    ]
+                ],
+            ]);
 
+            $response = json_decode($response->getBody()->getContents(), true);
+
+            if ($response['status'] !== 'success') {
+                return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+            }
+
+            $patientTest->update([
+                'result' => ($response['data']),
+            ]);
 
             return redirect()->back()->with('success', 'Patient Test Scanned. Check results in a few minutes.');
         } catch (\Throwable $th) {
+            Log::error($th);
+            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
         }
     }
 }

@@ -29,15 +29,18 @@ class SettingController extends Controller
         $data = $request->validate([
             'type' => 'required|in:Detection,Scan',
             'name' => 'required',
+            'code' => 'required',
         ]);
 
         if ($data['type'] == 'Detection') {
             DetectionModel::create([
                 'name' => $data['name'],
+                'code' => $data['code'],
             ]);
         } else {
             ScanModel::create([
                 'name' => $data['name'],
+                'code' => $data['code'],
             ]);
         }
 

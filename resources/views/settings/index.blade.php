@@ -18,6 +18,9 @@
                                         Name
                                     </th>
                                     <th scope="col" class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
+                                        Code
+                                    </th>
+                                    <th scope="col" class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
                                         Action
                                     </th>
                                 </tr>
@@ -30,6 +33,9 @@
                                         </th>
                                         <td class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
                                             <span class="text-sm font-semibold">{{ $sm->name }}</span>
+                                        </td>
+                                        <td class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
+                                            <span class="text-sm font-semibold">{{ $sm->code }}</span>
                                         </td>
                                         <td>
                                             <div class="flex justify-center">
@@ -66,6 +72,9 @@
                                         Name
                                     </th>
                                     <th scope="col" class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
+                                        Code
+                                    </th>
+                                    <th scope="col" class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
                                         Action
                                     </th>
                                 </tr>
@@ -77,7 +86,7 @@
                                             {{ $loop->iteration }}
                                         </th>
                                         <td class="px-6 py-4 text-center whitespace-nowrap dark:text-white">
-                                            <span class="text-sm font-semibold">{{ $dm->name }}</span>
+                                            <span class="text-sm font-semibold">{{ $dm->code }}</span>
                                         </td>
                                         <td>
                                             <div class="flex justify-center">
@@ -117,6 +126,14 @@
                         <input type="text" name="name" id="name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm dark:bg-gray-700 dark:text-gray-400">
                     </div>
                 </div>
+                <div class="flex flex-col">
+                    <label for="code" class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Code
+                    </label>
+                    <div class="mt-1">
+                        <input type="text" name="code" id="name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm dark:bg-gray-700 dark:text-gray-400">
+                    </div>
+                </div>
                 <div class="flex justify-end mt-4">
                     <button type="submit" class="text-white text-right bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-sm text-sm w-full sm:w-auto px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
                 </div>
@@ -137,6 +154,14 @@
                     </label>
                     <div class="mt-1">
                         <input type="text" name="name" id="name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm dark:bg-gray-700 dark:text-gray-400">
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <label for="code" class="block text-sm font-medium text-gray-700 dark:text-gray-400">
+                        Code
+                    </label>
+                    <div class="mt-1">
+                        <input type="text" name="code" id="name" class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm dark:bg-gray-700 dark:text-gray-400">
                     </div>
                 </div>
                 <div class="flex justify-end mt-4">

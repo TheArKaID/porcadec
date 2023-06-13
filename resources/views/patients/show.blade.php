@@ -100,7 +100,7 @@
                                     </th>
                                     <td class="px-6 py-4">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100">
-                                            {{ $pt->result }}
+                                            {{ $pt->result == 'null' ? 'Processing' : $pt->getReadableTestResult() }}
                                         </span>
                                     </td>
                                     <td class="px-6 py-4">
@@ -158,7 +158,7 @@
                     <select id="scan_model" name="scan_model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         <option selected hidden value disabled>Pilih Model Scan</option>
                         @foreach ($scanModel as $sm)
-                            <option value="{{ $sm->name }}">{{ $sm->name }}</option>
+                            <option value="{{ $sm->code }}">{{ $sm->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -167,7 +167,7 @@
                     <select id="detection_model" name="detection_model" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                         <option selected hidden value disabled>Pilih Model Detection</option>
                         @foreach ($detectionModel as $dm)
-                            <option value="{{ $dm->name }}">{{ $dm->name }}</option>
+                            <option value="{{ $dm->code }}">{{ $dm->name }}</option>
                         @endforeach
                     </select>
                 </div>
