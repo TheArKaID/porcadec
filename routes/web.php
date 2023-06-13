@@ -4,6 +4,7 @@ use App\Http\Controllers\CustomerServiceController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::prefix('patient')->name('patient.')->group(function () {
+    Route::prefix('users')->name('users.')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::post('/', [UserController::class, 'store'])->name('create');
+        Route::patch('/{user}/edit', [UserController::class, 'update'])->name('edit');
+        Route::delete('/{user}/delete', [UserController::class, 'destroy'])->name('delete');
+    });
+    Route::prefix('patients')->name('patient.')->group(function () {
         Route::get('/', [PatientController::class, 'index'])->name('index');
         Route::post('/{patient}/test', [PatientController::class, 'createTest'])->name('test.create');
         Route::get('/{patient}', [PatientController::class, 'show'])->name('show');

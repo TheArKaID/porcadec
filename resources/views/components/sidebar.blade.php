@@ -28,8 +28,8 @@
                     </li>
                     @if (Auth::user()->role == \App\Models\User::$ADMIN)
                         <li>
-                            <a href="#"
-                                class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
+                            <a href="{{ route('users.index') }}"
+                                class="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group {{ \Request::is('users*') ? 'bg-gray-100' : ''}}">
                                 <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
