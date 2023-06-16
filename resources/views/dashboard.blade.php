@@ -367,52 +367,52 @@
 
                 (new window.ApexCharts(document.getElementById('main-chart'), options)).render()
 
-                var isZeroPosi = false
-                var firstPositive
-                if (series[0][0] == 0) {
-                    isZeroPosi = true
-                    firstPositive = 1
-                } else {
-                    firstPositive = series[0][0];
-                }
+                // var isZeroPosi = false
+                // var firstPositive
+                // if (series[0][0] == 0) {
+                //     isZeroPosi = true
+                //     firstPositive = 1
+                // } else {
+                //     firstPositive = series[0][0];
+                // }
 
-                var lastPositive
-                if (series[series.length - 1][0] == 0) {
-                    lastPositive = 1
-                } else {
-                    if (isZeroPosi) {
-                        lastPositive = series[series.length - 1][0]+1;
-                    } else {
-                        lastPositive = series[series.length - 1][0];
-                    }
-                }
+                // var lastPositive
+                // if (series[series.length - 1][0] == 0) {
+                //     lastPositive = 1
+                // } else {
+                //     if (isZeroPosi) {
+                //         lastPositive = series[series.length - 1][0]+1;
+                //     } else {
+                //         lastPositive = series[series.length - 1][0];
+                //     }
+                // }
 
-                const percentagePositive = ((lastPositive - firstPositive) / firstPositive) * 100;
+                // const percentagePositive = ((lastPositive - firstPositive) / firstPositive) * 100;
 
-                var isZeroNega = false
-                var firstNegative
-                if (series[0][1] == 0) {
-                    isZeroNega = true
-                    firstNegative = 1
-                } else {
-                    firstNegative = series[0][1];
-                }
+                // var isZeroNega = false
+                // var firstNegative
+                // if (series[0][1] == 0) {
+                //     isZeroNega = true
+                //     firstNegative = 1
+                // } else {
+                //     firstNegative = series[0][1];
+                // }
 
-                var lastNegative
-                if (series[series.length - 1][1] == 0) {
-                    lastNegative = 1
-                } else {
-                    if (isZeroNega) {
-                        lastNegative = series[series.length - 1][1]+1;
-                    } else {
-                        lastNegative = series[series.length - 1][1];
-                    }
-                }
+                // var lastNegative
+                // if (series[series.length - 1][1] == 0) {
+                //     lastNegative = 1
+                // } else {
+                //     if (isZeroNega) {
+                //         lastNegative = series[series.length - 1][1]+1;
+                //     } else {
+                //         lastNegative = series[series.length - 1][1];
+                //     }
+                // }
 
-                const percentageNegative = ((lastNegative - firstNegative) / firstNegative) * 100;
+                // const percentageNegative = ((lastNegative - firstNegative) / firstNegative) * 100;
 
-                document.getElementById('positive-percentage').innerText = percentagePositive.toFixed(2) + '%';
-                document.getElementById('negative-percentage').innerText = percentageNegative.toFixed(2) + '%';
+                // document.getElementById('positive-percentage').innerText = percentagePositive.toFixed(2) + '%';
+                // document.getElementById('negative-percentage').innerText = percentageNegative.toFixed(2) + '%';
                 
             });
         </script>
