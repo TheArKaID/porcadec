@@ -65,5 +65,11 @@ class Patient extends Model
         static::creating(function ($model) {
             $model->id = (string) $model->newUniqueId();
         });
+
+        static::deleting(function ($model) {
+            foreach ($model->patientTests as $patientTest) {
+                $patientTest->delete();
+            }
+        });
     }
 }

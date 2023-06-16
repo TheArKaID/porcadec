@@ -9,6 +9,7 @@ use App\Models\Patient;
 use App\Models\PatientTest;
 use App\Models\ScanModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class PatientController extends Controller
@@ -82,7 +83,17 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $patient->delete();
+            
+            DB::commit();
+            return redirect()->back()->with('success', 'Patient Deleted.');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error($th);
+            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        }
     }
 
     /**

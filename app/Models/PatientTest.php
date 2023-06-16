@@ -65,5 +65,11 @@ class PatientTest extends Model
         static::creating(function ($model) {
             $model->id = (string) $model->newUniqueId();
         });
+
+        static::deleting(function ($model) {
+            if (file_exists(storage_path('app/public/images/scans/' . $model->id . '.png'))) {
+                unlink(storage_path('app/public/images/scans/' . $model->id . '.png'));
+            }
+        });
     }
 }

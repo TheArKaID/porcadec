@@ -149,8 +149,8 @@
                                                                 <label for="result" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
                                                                 <div class="flex flex-col">
                                                                     <div class="flex flex-col">
-                                                                        <div class="relative">
-                                                                            <img src="{{ route('patient.test.image', [$pt->patient_id, $pt->id]) }}" alt="Image" class="w-full h-96 object-cover rounded-lg" loading="lazy">
+                                                                        <div class="flex relative justify-center item-center">
+                                                                            <img src="{{ route('patient.test.image', [$pt->patient_id, $pt->id]) }}" alt="Image" class="h-full w-full object-cover rounded-lg" loading="lazy">
                                                                         </div>
                                                                     </div>
                                                                 </div>

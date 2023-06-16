@@ -10,7 +10,7 @@
                 <button data-modal-target="create-modal" data-modal-toggle="create-modal" type="button" class="text-white text-right bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-sm text-sm sm:w-auto px-4 py-2 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Add</button>
             </div>
             <table class="divide-y divide-gray-300" id="dataTable">
-                <thead class="">
+                <thead class="text-left">
                     <tr>
                         <th class="px-6 py-2 text-semi-bold">
                             No
@@ -54,9 +54,12 @@
                                 {{ $patient->sex == 'M' ? 'Male' : 'Female' }}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <a href="{{ route('patient.show', $patient->id) }}" type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</a>
-                                {{-- <a href="#" type="button" class="text-black border border-yellow-300 font-medium rounded-sm text-sm text-center px-2 py-2 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">Ubahh Status</a> --}}
-                                <a href="#" type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</a>
+                                <form  action="{{ route('patient.destroy', $patient->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('patient.show', $patient->id) }}" type="button" class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</a>
+                                    <button type="submit" onclick="return confirm('Delete Patient? All Patient Test History will be deleted')" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-sm text-sm px-2 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
