@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="pt-6 px-4">
-        <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
-            <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+        <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-4">
+            <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 2xl:col-span-1">
 
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex-shrink-0">
@@ -21,12 +21,9 @@
                     </div>
                 </div>
                 <div id="main-chart"></div>
-
             </div>
 
             <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-
-                <!-- Card Title -->
                 <div class="mb-4 flex items-center justify-between">
                     <div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Covid Test</h3>
@@ -36,7 +33,6 @@
                         <a href="{{ route('patient.index') }}" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all Patient</a>
                     </div>
                 </div>
-                <!-- Table -->
                 <div class="flex flex-col mt-8">
                     <div class="overflow-x-auto rounded-lg">
                         <div class="align-middle inline-block min-w-full">
@@ -62,7 +58,7 @@
                                                     {{ $lt->patient->name }}
                                                 </td>
                                                 <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                    {{ \Carbon\Carbon::parse($lt->created_at)->locale('id_ID')->format('l, d F Y') }}
+                                                    {{ \Carbon\Carbon::parse($lt->created_at)->locale('id_ID')->format('h:m:s - l, d F Y') }}
                                                 </td>
                                                 <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                                     <span class="font-semibold">{{ json_decode($lt->result)->class_label }}</span>
@@ -101,12 +97,10 @@
                         {{ number_format(($totalPatientPositiveTest / $totalPatientTest) * 100, 2) }}%
                     </div>
                 </div>
-
             </div>
 
 
             <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">{{ $totalPatientNegativeTest }}</span>
@@ -116,13 +110,10 @@
                         {{ number_format(($totalPatientNegativeTest / $totalPatientTest) * 100, 2) }}%
                     </div>
                 </div>
-
             </div>
-
         </div>
         <div class="grid grid-cols-1 xl:gap-4 my-4">
             <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                <!-- Card Title -->
                 <h3 class="text-xl leading-none font-bold text-gray-900 mb-10">PKU Muhammadiyah Hospitals</h3>
                 <div class="block w-full overflow-x-auto">
                     <table class="items-center w-full bg-transparent border-collapse">
@@ -326,9 +317,7 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
         </div>
     </div>
 
