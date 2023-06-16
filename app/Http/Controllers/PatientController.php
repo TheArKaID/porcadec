@@ -18,16 +18,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::all();
+        $patients = Patient::orderBy('created_at', 'DESC')->get();
         return view('patients.index', compact('patients'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -35,7 +27,11 @@ class PatientController extends Controller
      */
     public function store(StorePatientRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        Patient::create($data);
+
+        return redirect()->back()->with('success', 'Patient Created.');
     }
 
     /**
