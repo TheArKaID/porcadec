@@ -6,17 +6,18 @@
                 <div class="flex items-center justify-between mb-4">
                     <div class="flex-shrink-0">
                         <span
-                            class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
-                        <h3 class="text-base font-normal text-gray-500">Sales this week</h3>
+                            class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">Covid Test</span>
+                        <h3 class="text-base font-normal text-gray-500">For The Last 30 Days</h3>
                     </div>
-                    <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                        12.5%
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                                clip-rule="evenodd"></path>
-                        </svg>
+                    <div class="grid">
+                        <div class="flex items-center justify-end flex-1 text-red-500 text-base font-bold">
+                            <span class="text-black">Positive &nbsp;</span>
+                            <span id="positive-percentage"></span>
+                        </div>
+                        <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                            <span class="text-black">Negative &nbsp;</span>
+                            <span id="negative-percentage"></span>
+                        </div>
                     </div>
                 </div>
                 <div id="main-chart"></div>
@@ -256,7 +257,6 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
                                     <img class="h-8 w-8 rounded-full"
-                                        src="http://localhost:1313/windster/images/users/neil-sims.png"
                                         alt="Neil image">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -276,7 +276,6 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
                                     <img class="h-8 w-8 rounded-full"
-                                        src="http://localhost:1313/windster/images/users/bonnie-green.png"
                                         alt="Neil image">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -296,7 +295,6 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
                                     <img class="h-8 w-8 rounded-full"
-                                        src="http://localhost:1313/windster/images/users/michael-gough.png"
                                         alt="Neil image">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -316,7 +314,6 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
                                     <img class="h-8 w-8 rounded-full"
-                                        src="http://localhost:1313/windster/images/users/thomas-lean.png"
                                         alt="Neil image">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -336,7 +333,6 @@
                             <div class="flex items-center space-x-4">
                                 <div class="flex-shrink-0">
                                     <img class="h-8 w-8 rounded-full"
-                                        src="http://localhost:1313/windster/images/users/lana-byrd.png"
                                         alt="Neil image">
                                 </div>
                                 <div class="flex-1 min-w-0">
@@ -500,4 +496,71 @@
 
         </div>
     </div>
+
+    @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                const data = JSON.parse(`{!! $data !!}`)
+
+                const groupedData = data.reduce((acc, item) => {
+                        acc[item.date] = {
+                            Positive:  item.Positive,
+                            Negative:  item.Negative
+                        };
+
+                    return acc;
+                }, {});
+
+                const dates = Object.keys(groupedData);
+
+                const series = Object.values(groupedData).map(item => [item.Positive, item.Negative]);
+
+                const options = {
+                    chart: {
+                        type: 'line',
+                    },
+                    colors: ['#e30015', '#00E396'],
+                    series: [
+                        {
+                            name: 'Positive',
+                            data: series.map(item => item[0]),
+                        },
+                        {
+                            name: 'Negative',
+                            data: series.map(item => item[1]),
+                        },
+                    ],
+                    grid: {
+                        row: {
+                            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                            opacity: 0.5
+                        },
+                    },
+                    xaxis: {
+                        categories: dates,
+                    },
+                };
+
+                (new window.ApexCharts(document.getElementById('main-chart'), options)).render()
+                
+                // get percentage of the difference between the first and last values of Positive
+                const firstPositive = series[0][0]+1;
+                const lastPositive = series[series.length - 1][0]+1;
+                const positiveDiff = lastPositive - firstPositive;
+                const positivePercentage = (positiveDiff / firstPositive) * 100;
+
+                document.getElementById('positive-percentage').innerText = positivePercentage.toFixed(2) + '%';
+
+                // get percentage of the difference between the first and last values of Negative
+                const firstNegative = series[0][1];
+                const lastNegative = series[series.length - 1][1];
+                const negativeDiff = lastNegative - firstNegative;
+                const negativePercentage = (negativeDiff / firstNegative) * 100;
+                document.getElementById('negative-percentage').innerText = negativePercentage.toFixed(2) + '%';
+
+                
+            });
+        </script>
+    @endpush
 </x-app-layout>
+

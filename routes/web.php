@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
+use App\Models\PatientTest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $thirtyDaysAgo = now()->subDays(30)->format('Y-m-d');
+    $data = PatientTest::selectRaw("DATE(patient_tests.created_at) AS date")
+        ->selectRaw("COUNT(CASE WHEN JSON_EXTRACT(patient_tests.result, '$.class_label') = 'COVID-19' THEN 1 END) AS Positive")
+        ->selectRaw("COUNT(CASE WHEN JSON_EXTRACT(patient_tests.result, '$.class_label') = 'non-COVID-19' THEN 1 END) AS Negative")
+        ->join('patients', 'patients.id', '=', 'patient_tests.patient_id')
+        ->where('patient_tests.created_at', '>=', $thirtyDaysAgo)
+        ->groupByRaw("DATE(patient_tests.created_at)")
+        ->orderByRaw("DATE(patient_tests.created_at)")
+        ->get();
+
+    return view('dashboard', compact('data'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
