@@ -10,14 +10,14 @@
                         <h3 class="text-base font-normal text-gray-500">For The Last 30 Days</h3>
                     </div>
                     <div class="grid">
-                        <div class="flex items-center justify-end flex-1 text-red-500 text-base font-bold">
+                        {{-- <div class="flex items-center justify-end flex-1 text-red-500 text-base font-bold">
                             <span class="text-black">Positive &nbsp;</span>
                             <span id="positive-percentage"></span>
                         </div>
                         <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
                             <span class="text-black">Negative &nbsp;</span>
                             <span id="negative-percentage"></span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div id="main-chart"></div>
