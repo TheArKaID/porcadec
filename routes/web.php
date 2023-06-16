@@ -5,6 +5,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
+use App\Models\Patient;
 use App\Models\PatientTest;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,15 @@ Route::get('/dashboard', function () {
         ->orderByRaw("DATE(patient_tests.created_at)")
         ->get();
 
-    return view('dashboard', compact('data'));
+    $latestTests = PatientTest::select('id', 'patient_id', 'result', 'created_at')->latest('created_at')->limit(5)->with('patient:id,name')->get();
+
+    // Get total Patient Test
+    $totalPatientTest = PatientTest::count();
+
+    $totalPatientPositiveTest = PatientTest::whereJsonContains('result->class_label', 'COVID-19')->count();
+    $totalPatientNegativeTest = PatientTest::whereJsonContains('result->class_label', 'non-COVID-19')->count();
+
+    return view('dashboard', compact('data', 'latestTests', 'totalPatientTest', 'totalPatientPositiveTest', 'totalPatientNegativeTest'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
