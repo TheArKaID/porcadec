@@ -376,10 +376,11 @@
                 document.getElementById('positive-percentage').innerText = positivePercentage.toFixed(2) + '%';
 
                 // get percentage of the difference between the first and last values of Negative
-                const firstNegative = series[0][1];
-                const lastNegative = series[series.length - 1][1];
+                const firstNegative = series[0][1]+1;
+                const lastNegative = series[series.length - 1][1]+1;
                 const negativeDiff = lastNegative - firstNegative;
                 const negativePercentage = (negativeDiff / firstNegative) * 100;
+
                 document.getElementById('negative-percentage').innerText = negativePercentage.toFixed(2) + '%';
 
                 
