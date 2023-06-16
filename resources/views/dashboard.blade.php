@@ -369,7 +369,7 @@
 
                 var isZeroPosi = false
                 var firstPositive
-                if (series[0][0] === 0) {
+                if (series[0][0] == 0) {
                     isZeroPosi = true
                     firstPositive = 1
                 } else {
@@ -377,7 +377,7 @@
                 }
 
                 var lastPositive
-                if (series[series.length - 1][0] === 0) {
+                if (series[series.length - 1][0] == 0) {
                     lastPositive = 1
                 } else {
                     if (isZeroPosi) {
@@ -391,7 +391,7 @@
 
                 var isZeroNega = false
                 var firstNegative
-                if (series[0][1] === 0) {
+                if (series[0][1] == 0) {
                     isZeroNega = true
                     firstNegative = 1
                 } else {
@@ -399,7 +399,7 @@
                 }
 
                 var lastNegative
-                if (series[series.length - 1][1] === 0) {
+                if (series[series.length - 1][1] == 0) {
                     lastNegative = 1
                 } else {
                     if (isZeroNega) {
